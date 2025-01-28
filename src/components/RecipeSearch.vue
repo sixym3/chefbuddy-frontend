@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import NavBar from './NavBar.vue';
+import axios from 'axios';
 
 export default {
   components: {
-    NavBar,
+    
   },
   data() {
     return {
@@ -21,9 +21,23 @@ export default {
     };
   },
   methods: {
-    submitRecipe() {
+    async submitRecipe() {
       console.log('Submitting recipe:', this.recipeUrl);
-      // Add integration with backend API here
+      if (!this.recipeUrl) {
+        alert('Please enter a recipe URL.');
+        return;
+      }
+
+      try {
+        const response = await axios.post('http://localhost:3000/api/recipes/scrape', {
+          url: this.recipeUrl,
+        });
+
+        console.log('Recipe added successfully:', response.data);
+      } catch (error) {
+        console.error('Error adding recipe:', error.response?.data || error.message);
+        alert('Failed to add recipe. Please try again.');
+      }
     },
   },
 };

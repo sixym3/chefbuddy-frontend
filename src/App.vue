@@ -1,15 +1,15 @@
 <!-- App.vue -->
 <template>
-    <v-app>
-      <v-row class="ma-0 justify-space-around">
-        <v-col v-for="item in navItems" :key="item.route" cols="auto" class="text-center pa-2">
+    <div>
+      <div class="ma-0 justify-space-around">
+        <div v-for="item in navItems" :key="item.route" cols="auto" class="text-left pa-2 d-inline-block">
           <RouterLink :to="item.route">{{ item.name }}</RouterLink>
-        </v-col>
-      </v-row>
-      <v-main>
+        </div>
+      </div>
+      <div>
         <router-view />
-      </v-main>
-    </v-app>
+      </div>
+    </div>
   </template>
   
   <script>

@@ -7,11 +7,10 @@
 </template>
 
 <script>
-import NavBar from './NavBar.vue';
 
 export default {
   components: {
-    NavBar,
+    
   },
   // Add logic for fetching and displaying recipes here
 };
